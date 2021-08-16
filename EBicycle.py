@@ -1,9 +1,3 @@
-# 寫一類Bicycle,有run方法,調用時顯示騎行公里數
-# 再寫一類EBicycle,在Bicycle的基上加電池volume屬性:
-#      1. file_charge(self, vol)
-#      2. run(km) 每騎10km消耗電量1度, 同時顯示當前電量,當電量耗盡時,則換成騎Bicycle方式
-
-
 class Bicycle(object):
     def run(self, km, name):
         if km == 0:
@@ -17,7 +11,7 @@ class EBicycle(Bicycle):
         self.volume = volume
         self.km = km
         print('電動車剛買時,內存電力:%d度。總里程數:%d公里。' % (volume, self.km))
-        self.ten = 0  # 預設訂一個數值，用來加上如果輸入公里數小於10 得需要扣1度電力
+        self.ten = 0  
 
     def fill_charge(self, vol=0):
         print('-'*20)
@@ -28,48 +22,40 @@ class EBicycle(Bicycle):
         print('-'*20)
         print('%s想騎電動車:%d公里去溜搭~' % (name, km))
 
-        '''先判斷電力夠不夠，是否為0,如果沒電，即進入腳踩'''
         if self.volume <= 0:
             print('沒電了啦，電動車不會跑了唷!')
             super().run(km, name)
 
-        '''判斷如果夠電，即進入判斷扣電程序'''
         if self.volume > 0:
             print('跑前電力:', self.volume, '度。能再跑:', self.volume * 10, '公里。')
-
-            '''電力不夠欲運行跑的公里數，剩下的得用腳踩'''
             if self.volume * 10 <= km:
                 super().run(km - self.volume * 10, name)
-                self.volume = 0  # 因電力用盡，故直接為0
+                self.volume = 0  
                 print('跑後電力:%d度。' % self.volume)
-
-            elif self.volume*10 >= km:  # 如果電力完全足夠公里數運行
+            elif self.volume*10 >= km:  
                 if km <= 10 and self.ten+km < 10:
                     self.volume -= 0
                     self.ten += km
                 elif km <= 10 and self.ten+km >= 10:
                     self.ten = (self.ten + km) - 10
                     self.volume -= 1
-
                 elif km >= 10:
                     self.volume -= km // 10
                     if self.ten + km >= 10:
                         self.ten = (self.ten + km) - 10
                         self.volume -= 1
-
                     elif self.ten + km < 10:
                         self.ten += km
                         self.volume -= 0
 
                 print('跑後電力:%d度。'%self.volume)
-
-                self.km += km  # 總里程數=預計要騎的+預設值
+                self.km += km  
                 print('總里程數:%d公里。' % self.km)
 
 
 b = Bicycle()
 b.run(10, 'Dora')
-e = EBicycle(5)  # 表示剛買的電動車只有5度電
+e = EBicycle(5)  
 e.fill_charge(3)
 e.run(4, 'Dora')
 e.run(28, 'Dora')
