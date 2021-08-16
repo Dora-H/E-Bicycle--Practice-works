@@ -56,7 +56,7 @@
                 print('跑前電力:', self.volume, '度。能再跑:', self.volume * 10, '公里。')
 
 
-#### 電力不夠欲運行跑的公里數，剩下的得用腳踩
+##### 電力不夠欲運行跑的公里數，剩下的得用腳踩
                 if self.volume * 10 <= km:
                     super().run(km - self.volume * 10, name)
                     
