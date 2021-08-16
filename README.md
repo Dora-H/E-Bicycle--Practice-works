@@ -96,6 +96,7 @@
                     print('總里程數:%d公里。' % self.km)
 
 
+#### 執行: 
     b = Bicycle()
     b.run(10, 'Dora')
     e = EBicycle(5)  # 表示剛買的電動車只有5度電
