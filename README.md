@@ -1,4 +1,4 @@
-## 說明:  
+## Explaine:  
 騎乘腳踏車與轉換成電動腳踏車之間電力轉換之程式。  
 寫一類Bicycle，有run方法，調用時顯示騎行公里數。  
 再寫一類EBicycle，在Bicycle的基礎上加電池volume屬性:  
@@ -6,7 +6,7 @@
 2. run(km) 每騎10km消耗電量1度, 同時顯示當前電量,當電量耗盡時,則換成騎Bicycle方式
 
 
-## Class
+## Classes
 ● Bicycle  
 ● EBicycle    
 
@@ -14,6 +14,10 @@
 ## Functions
 ● run  
 ● fill_charge   
+
+
+## Inheritance
+● super   
 
 
 ## Runs
